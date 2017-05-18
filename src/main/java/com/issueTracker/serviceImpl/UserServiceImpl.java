@@ -3,6 +3,7 @@ package com.issueTracker.serviceImpl;
 import com.issueTracker.models.bindingModels.RegisterUserModel;
 import com.issueTracker.repositories.UserRepository;
 import com.issueTracker.services.UserService;
+import com.issueTracker.utils.parser.interfaces.ModelParser;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -12,6 +13,9 @@ public class UserServiceImpl implements UserService{
 
     @Inject
     private UserRepository userRepository;
+
+    @Inject
+    private ModelParser modelParser;
 
     @Override
     public void create(RegisterUserModel registerUserModel) {
