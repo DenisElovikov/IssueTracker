@@ -1,9 +1,17 @@
 package com.issueTracker.models.bindingModels;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class RegisterUserModel {
+
+    @Size(min = 5, max = 30, message = "The username is invalid")
     private String username;
 
+    @Size(min = 5, message = "The full name is invalid")
     private String fullName;
+
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*,.])[A-Za-z\\d!@#$%^&*,.&]{8,}$", message = "The password is invalid" )
 
     private String password;
 

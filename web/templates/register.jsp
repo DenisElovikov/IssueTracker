@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Denis
-  Date: 5/19/2017
-  Time: 9:11 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -15,13 +8,14 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/action.css"/>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 <br/>
 <div class="container">
     <div class="row">
         <div class="jumbotron">
             <form method="post">
                 <div class="form-group">
-                    <input name="name" type="text" class="form-control" placeholder="Enter username">
+                    <input name="username" type="text" class="form-control" placeholder="Enter username">
                 </div>
                 <div class="form-group">
                     <input name="fullName" type="text" class="form-control" placeholder="Enter full name">
@@ -30,7 +24,7 @@
                     <input name="password" type="password" class="form-control" placeholder="Enter password">
                 </div>
                 <div class="form-group">
-                    <input name="repeatPassword" type="password" class="form-control" placeholder="Repeat password">
+                    <input name="confirmPassword" type="password" class="form-control" placeholder="Repeat password">
                 </div>
                 <div class="form-group">
                     <input class="btn btn-primary" type="submit" value="Create">
@@ -44,7 +38,7 @@
 <script  src="${pageContext.request.contextPath}/static/jquery/jquery.min.js"></script>
 <script  src="${pageContext.request.contextPath}/static/bootstrap/js/bootstrap.min.js"></script>
 <script>
-    $("#login").addClass("active");
+    $("#register").addClass("active");
 </script>
 </body>
 </html>

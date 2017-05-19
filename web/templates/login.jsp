@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Denis
-  Date: 5/19/2017
-  Time: 9:12 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -15,6 +8,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/action.css"/>
 </head>
 <body>
+<jsp:include page="menu.jsp"/>
 <br/>
 <div class="container">
     <div class="row">
