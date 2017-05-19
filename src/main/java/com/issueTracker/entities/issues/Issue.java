@@ -1,6 +1,7 @@
 package com.issueTracker.entities.issues;
 
-import com.issueTracker.entities.priorrity.Priority;
+import com.issueTracker.entities.priority.Priority;
+import com.issueTracker.entities.roles.Role;
 import com.issueTracker.entities.status.Status;
 import com.issueTracker.entities.users.User;
 
@@ -23,11 +24,11 @@ public class Issue {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    @Column(name = "creatio_date")
+    @Column(name = "creation_date", updatable = false)
     private Date creationDate;
 
     @ManyToOne
-    @JoinColumn(name = "author_id")
+    @JoinColumn(name = "author_id", updatable = false)
     private User author;
 
     public Issue() {

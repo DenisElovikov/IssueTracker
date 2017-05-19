@@ -1,5 +1,6 @@
 package com.issueTracker.controllers;
 
+
 import com.issueTracker.models.bindingModels.RegisterUserModel;
 import com.issueTracker.services.UserService;
 import com.mvcFramework.annotations.controller.Controller;
@@ -16,7 +17,6 @@ import javax.validation.Validator;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
 
 @Stateless
 @Controller
@@ -61,7 +61,7 @@ public class UserController {
 
     @GetMapping("/login")
     public String getLoginPage() {
-
         return "/templates/login";
     }
+
 }

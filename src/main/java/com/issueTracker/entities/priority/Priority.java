@@ -1,4 +1,4 @@
-package com.issueTracker.entities.priorrity;
+package com.issueTracker.entities.priority;
 
 public enum Priority {
     LOW, MEDIUM, HIGH

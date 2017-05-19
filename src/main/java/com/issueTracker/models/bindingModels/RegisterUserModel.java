@@ -12,7 +12,6 @@ public class RegisterUserModel {
     private String fullName;
 
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*,.])[A-Za-z\\d!@#$%^&*,.&]{8,}$", message = "The password is invalid" )
-
     private String password;
 
     private String confirmPassword;
@@ -48,6 +47,4 @@ public class RegisterUserModel {
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
     }
-
-
 }

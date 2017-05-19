@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -9,6 +10,12 @@
 </head>
 <body>
 <jsp:include page="menu.jsp"/>
+<c:forEach items="${errors}" var="error">
+    <div class="alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Error!</strong> ${error}
+    </div>
+</c:forEach>
 <br/>
 <div class="container">
     <div class="row">

@@ -4,7 +4,7 @@ import com.issueTracker.entities.users.User;
 
 public interface UserRepository {
 
-    void create (User user);
+    void create(User user);
 
     User findByUsername(String username);
 

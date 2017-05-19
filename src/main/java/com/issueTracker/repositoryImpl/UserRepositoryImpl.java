@@ -10,10 +10,11 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Stateless
-public class UserRepositoryImpl implements UserRepository{
+public class UserRepositoryImpl implements UserRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
+
 
     @Override
     public void create(User user) {
@@ -23,7 +24,7 @@ public class UserRepositoryImpl implements UserRepository{
     @Override
     public User findByUsername(String username) {
         Query query = this.entityManager.createQuery("SELECT u FROM User AS u " +
-            "WHERE u.username = :username");
+                "WHERE u.username = :username");
         query.setParameter("username", username);
         List<User> users = query.getResultList();
         return users.stream().findFirst().orElse(null);
@@ -33,7 +34,7 @@ public class UserRepositoryImpl implements UserRepository{
     public User findByUsernameAndPassword(String username, String password) {
         Query query = this.entityManager.createQuery("SELECT u FROM User AS u " +
                 "WHERE u.username = :username " +
-                "AND u.password = :password ");
+                "AND u.password = :password");
         query.setParameter("username", username);
         query.setParameter("password", password);
         List<User> users = query.getResultList();

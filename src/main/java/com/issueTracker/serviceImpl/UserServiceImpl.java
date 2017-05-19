@@ -1,5 +1,6 @@
 package com.issueTracker.serviceImpl;
 
+import com.issueTracker.entities.roles.Role;
 import com.issueTracker.entities.users.User;
 import com.issueTracker.models.bindingModels.RegisterUserModel;
 import com.issueTracker.repositories.UserRepository;
@@ -21,6 +22,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public void create(RegisterUserModel registerUserModel) {
         User user = this.modelParser.convert(registerUserModel, User.class);
+        user.setRole(Role.ADMIN);
         this.userRepository.create(user);
     }
 
