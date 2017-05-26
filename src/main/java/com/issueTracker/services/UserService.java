@@ -1,5 +1,6 @@
 package com.issueTracker.services;
 
+import com.issueTracker.models.bindingModels.LoggedUserModel;
 import com.issueTracker.models.bindingModels.RegisterUserModel;
 
 public interface UserService {
@@ -8,5 +9,5 @@ public interface UserService {
 
     RegisterUserModel findByUsername(String username);
 
-    RegisterUserModel findByUsernameAndPassword(String username, String password);
+    LoggedUserModel findByUsernameAndPassword(String username, String password);
 }

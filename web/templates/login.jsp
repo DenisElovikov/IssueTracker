@@ -9,6 +9,12 @@
 </head>
 <body>
 <jsp:include page="menu.jsp"/>
+<c:if test="${error != null}">
+    <div class="alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Error!</strong> ${error}
+    </div>
+</c:if>
 <br/>
 <div class="container">
     <div class="row">

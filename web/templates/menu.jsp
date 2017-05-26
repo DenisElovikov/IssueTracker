@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -25,10 +26,20 @@
                 <li id="issues"><a href="/issues">Issues</a></li>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li id="login"><a href="${pageContext.request.contextPath}/login">Log In</a></li>
-                <li id="register"><a href="${pageContext.request.contextPath}/register">Register</a></li>
-            </ul>
+            <c:choose>
+                <c:when test="${sessionScope.user == null}">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="login"><a href="${pageContext.request.contextPath}/login">Log In</a></li>
+                        <li id="register"><a href="${pageContext.request.contextPath}/register">Register</a></li>
+                    </ul>
+                </c:when>
+                <c:otherwise>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li id="logout"><a href="${pageContext.request.contextPath}/logout">Log Out(${sessionScope.user.username})</a></li>
+                    </ul>
+                </c:otherwise>
+            </c:choose>
+
         </div>
     </div>
 </nav>

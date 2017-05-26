@@ -2,6 +2,8 @@ package com.issueTracker.serviceImpl;
 
 import com.issueTracker.entities.roles.Role;
 import com.issueTracker.entities.users.User;
+import com.issueTracker.models.bindingModels.LoggedUserModel;
+import com.issueTracker.models.bindingModels.LoginUserModel;
 import com.issueTracker.models.bindingModels.RegisterUserModel;
 import com.issueTracker.repositories.UserRepository;
 import com.issueTracker.services.UserService;
@@ -22,7 +24,13 @@ public class UserServiceImpl implements UserService{
     @Override
     public void create(RegisterUserModel registerUserModel) {
         User user = this.modelParser.convert(registerUserModel, User.class);
-        user.setRole(Role.ADMIN);
+        long totalUsers = this.userRepository.getTotalUsers();
+        if (totalUsers ==0) {
+            user.setRole(Role.ADMIN);
+        }else {
+            user.setRole(Role.USER);
+        }
+
         this.userRepository.create(user);
     }
 
@@ -38,13 +46,13 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public RegisterUserModel findByUsernameAndPassword(String username, String password) {
+    public LoggedUserModel findByUsernameAndPassword(String username, String password) {
         User user = this.userRepository.findByUsernameAndPassword(username, password);
-        RegisterUserModel registerUserModel = null;
+        LoggedUserModel loggedUserModel = null;
         if (user != null) {
-            registerUserModel = this.modelParser.convert(user, RegisterUserModel.class);
+            loggedUserModel = this.modelParser.convert(user, LoggedUserModel.class);
         }
 
-        return registerUserModel;
+        return loggedUserModel;
     }
 }

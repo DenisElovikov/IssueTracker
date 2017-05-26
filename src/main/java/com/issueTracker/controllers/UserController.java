@@ -1,6 +1,8 @@
 package com.issueTracker.controllers;
 
 
+import com.issueTracker.models.bindingModels.LoggedUserModel;
+import com.issueTracker.models.bindingModels.LoginUserModel;
 import com.issueTracker.models.bindingModels.RegisterUserModel;
 import com.issueTracker.services.UserService;
 import com.mvcFramework.annotations.controller.Controller;
@@ -11,6 +13,7 @@ import com.mvcFramework.models.Model;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -64,4 +67,26 @@ public class UserController {
         return "/templates/login";
     }
 
+
+    @PostMapping("/login")
+    public String loginUser(HttpSession session, @ModelAttribute LoginUserModel loginUserModel, Model model) {
+        LoggedUserModel foundUser = this.userService.findByUsernameAndPassword(
+                loginUserModel.getUsername(),
+                loginUserModel.getPassword());
+
+        if (foundUser == null) {
+            model.addAttribute("error", "Invalid Login Details");
+            return "/templates/login";
+        }
+
+        session.setAttribute("user", foundUser);
+
+        return "redirect:/";
+    }
+
+    @GetMapping("/logout")
+    public String logoutUser(HttpSession session) {
+        session.invalidate();
+        return "redirect:/";
+    }
 }

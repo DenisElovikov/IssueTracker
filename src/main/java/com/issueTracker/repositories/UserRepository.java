@@ -9,4 +9,6 @@ public interface UserRepository {
     User findByUsername(String username);
 
     User findByUsernameAndPassword(String username, String password);
+
+    long getTotalUsers();
 }

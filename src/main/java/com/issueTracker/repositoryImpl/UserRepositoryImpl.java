@@ -40,4 +40,11 @@ public class UserRepositoryImpl implements UserRepository {
         List<User> users = query.getResultList();
         return users.stream().findFirst().orElse(null);
     }
+
+    @Override
+    public long getTotalUsers() {
+        Query query = this.entityManager.createQuery("SELECT COUNT (u) FROM User AS u");
+        long totalUsers = query.getFirstResult();
+        return totalUsers;
+    }
 }
