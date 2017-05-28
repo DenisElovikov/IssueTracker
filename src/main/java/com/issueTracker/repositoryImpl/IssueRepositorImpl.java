@@ -39,4 +39,9 @@ public class IssueRepositorImpl implements IssueRepository{
         query.setParameter("id", id);
         query.executeUpdate();
     }
+
+    @Override
+    public void update(Issue issue) {
+        this.entityManager.merge(issue);
+    }
 }

@@ -5,6 +5,8 @@ import com.issueTracker.entities.priority.Priority;
 import com.issueTracker.entities.status.Status;
 import com.issueTracker.entities.users.User;
 import com.issueTracker.models.bindingModels.IssueBindingModel;
+import com.issueTracker.models.bindingModels.IssueEditBindingModel;
+import com.issueTracker.models.viewModels.IssueEditViewModel;
 import com.issueTracker.models.viewModels.IssueViewModel;
 import com.issueTracker.repositories.IssueRepository;
 import com.issueTracker.repositories.UserRepository;
@@ -54,5 +56,22 @@ public class IssueServiceImpl implements IssueService {
         User user = this.userRepository.findByUsername(username);
         issue.setAuthor(user);
         this.issueRepository.create(issue);
+    }
+
+    @Override
+    public void update(IssueEditBindingModel issueBindingModel) {
+        Issue issue  = this.modelParser.convert(issueBindingModel, Issue.class);
+        issue.setPriority(Priority.valueOf(issueBindingModel.getPriority().toUpperCase()));
+        issue.setStatus(Status.valueOf(issueBindingModel.getStatus().toUpperCase()));
+        this.issueRepository.update(issue);
+    }
+
+    @Override
+    public IssueEditViewModel getIssueById(long id) {
+        Issue issue = this.issueRepository.findById(id);
+        IssueEditViewModel issueEditViewModel = this.modelParser.convert(issue, IssueEditViewModel.class);
+        issueEditViewModel.setPriority(issue.getPriority().toString());
+        issueEditViewModel.setStatus(issue.getStatus().toString());
+        return issueEditViewModel;
     }
 }

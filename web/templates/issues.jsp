@@ -64,10 +64,10 @@
                     </td>
                     <td>${issue.authorUsername}</td>
                     <td>
-                        <a href="/" class="btn mini btn-primary">Edit</a>
+                        <a href="/issues/edit/${issue.id}" class="btn mini btn-primary">Edit</a>
                     </td>
                     <td>
-                        <a href="/" class="confirm-delete mini btn btn-danger">Delete</a>
+                        <a href="/issues/delete/${issue.id}" class="confirm-delete mini btn btn-danger">Delete</a>
                     </td>
                 </tr>
             </c:forEach>

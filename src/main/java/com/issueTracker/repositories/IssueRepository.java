@@ -10,6 +10,8 @@ public interface IssueRepository {
 
     List<Issue> findAllIssues();
 
+    void update(Issue issue);
+
     Issue findById(long id);
 
     void deleteById(long id);
